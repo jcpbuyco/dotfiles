@@ -1,1 +1,4 @@
 *.backup
+
+# ignore tmux plugins dir
+.config/tmux/plugins
