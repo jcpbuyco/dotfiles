@@ -896,6 +896,7 @@ require('lazy').setup({
   { import = 'custom.plugins.null-ls' },
   { import = 'custom.plugins.autotag' },
   { import = 'custom.plugins.vim-tmux-navigation' },
+  { import = 'custom.plugins.vim-kitty' },
 }, {
   ui = {
     -- If you are using a Nerd Font: set icons to an empty table which will use the
