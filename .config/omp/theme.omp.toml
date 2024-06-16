@@ -61,6 +61,7 @@ pwsh = "Shell"
     fetch_stash_count = true
     fetch_status = true
     fetch_upstream_icon = true
+    branch_icon = ''
 
 [[blocks]]
 type = "prompt"
@@ -114,3 +115,11 @@ newline = true
   style = "plain"
   foreground = "#E06C75"
   template = "❯"
+
+[transient_prompt]
+  foreground_templates = [
+    "{{if gt .Code 0}}red{{end}}",
+    "{{if eq .Code 0}}magenta{{end}}"
+  ]
+  background = "transparent"
+  template = "❯ "
