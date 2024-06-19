@@ -17,21 +17,11 @@ ralt - 4 : DISPLAY="$(yabai -m query --displays --display | jq '.index')"; yabai
 shift + lalt - p : yabai -m window --space prev; yabai -m space --focus prev; sketchybar --trigger windows_on_spaces
 shift + lalt - n : yabai -m window --space next; yabai -m space --focus next; sketchybar --trigger windows_on_spaces
 
-cmd + shift - x : yabai -m window --space recent
-cmd + shift - 1 : yabai -m window --space 1
-cmd + shift - 2 : yabai -m window --space 2
-cmd + shift - 3 : yabai -m window --space 3
-cmd + shift - 4 : yabai -m window --space 4
-cmd + shift - 5 : yabai -m window --space 5
-cmd + shift - 6 : yabai -m window --space 6
-cmd + shift - 7 : yabai -m window --space 7
-cmd + shift - 8 : yabai -m window --space 8
-
 # Float / Unfloat window
 lalt - space : yabai -m window --toggle float; sketchybar --trigger window_focus
 
 # Resize windows
-ctrl + lalt - j : yabai -m window --resize bottom:0:100 || yabai -m window --resize top:0:100
-ctrl + lalt - k : yabai -m window --resize bottom:0:-100 || yabai -m window --resize top:0:-100
-ctrl + lalt - h : yabai -m window --resize right:-100:0 || yabai -m window --resize left:-100:0
-ctrl + lalt - l :  yabai -m window --resize right:100:0 || yabai -m window --resize left:100:0
+ctrl + lalt - j : yabai -m window --resize bottom:0:20 || yabai -m window --resize top:0:20
+ctrl + lalt - k : yabai -m window --resize bottom:0:-20 || yabai -m window --resize top:0:-20
+ctrl + lalt - h : yabai -m window --resize right:-20:0 || yabai -m window --resize left:-20:0
+ctrl + lalt - l :  yabai -m window --resize right:20:0 || yabai -m window --resize left:20:0

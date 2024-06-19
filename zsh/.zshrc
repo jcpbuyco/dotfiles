@@ -53,12 +53,17 @@ zstyle ':completion:*' menu no
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
 
 # Aliases
+
 # ls
 alias ls='ls --color'
 alias ll='ls -alF'
+
 # vim
 alias vim='nvim'
 alias vi='nvim'
+
+# bat
+alias cat='bat'
 
 # Shell integrations
 # fzf version 0.48.0 or later
@@ -103,3 +108,5 @@ esac
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+neofetch
