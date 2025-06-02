@@ -76,7 +76,7 @@ eval "$(fzf --zsh)"
 # Path
 
 # Homebrew
-export PATH="/opt/homebrew/bin:$PATH"
+export PATH="/opt/homebrew/sbin:/opt/homebrew/bin:$PATH"
 
 # Prompt
 if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
@@ -108,5 +108,3 @@ esac
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
-
-neofetch
