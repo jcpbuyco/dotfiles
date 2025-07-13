@@ -162,6 +162,9 @@ vim.o.cursorline = true
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.o.scrolloff = 10
 
+vim.o.tabstop = 2
+vim.o.shiftwidth = 2
+
 -- if performing an operation that would fail due to unsaved changes in the buffer (like `:q`),
 -- instead raise a dialog asking if you wish to save the current file(s)
 -- See `:help 'confirm'`
@@ -184,6 +187,9 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagn
 -- NOTE: This won't work in all terminal emulators/tmux/etc. Try your own mapping
 -- or just use <C-\><C-n> to exit terminal mode
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
+
+-- Quick file navigation
+vim.keymap.set('n', '<leader>e', ':Explore<CR>', { desc = '[E]xplore current directory' })
 
 -- TIP: Disable arrow keys in normal mode
 -- vim.keymap.set('n', '<left>', '<cmd>echo "Use h to move!!"<CR>')
@@ -725,6 +731,7 @@ require('lazy').setup({
         'stylua', -- Used to format Lua code
         'prettierd',
         'prettier',
+        'tailwindcss',
         { 'eslint_d', version = '13.1.2' },
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
@@ -1088,6 +1095,11 @@ require('lazy').setup({
     --    - Incremental selection: Included, see `:help nvim-treesitter-incremental-selection-mod`
     --    - Show your current context: https://github.com/nvim-treesitter/nvim-treesitter-context
     --    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
+  },
+  -- Ghostty syntax highlighting
+  {
+    'bezhermoso/tree-sitter-ghostty',
+    build = 'make nvim_install',
   },
 
   -- The following comments only work if you have downloaded the kickstart repo, not just copy pasted the

@@ -3,8 +3,8 @@ theme = rose-pine
 font-family = "GeistMono NFM"
 font-size = 20
 
-background-opacity = 0.8
-background-blur = 80
+background-opacity = 0.85
+background-blur = 60
 
 window-padding-balance = true
 window-padding-x = 10
@@ -13,3 +13,6 @@ window-padding-color = background
 window-vsync = true
 window-decoration = none
 macos-titlebar-style = hidden
+
+# https://github.com/hackrmomo/ghostty/shaders
+custom-shader = shaders/bloom.glsl
