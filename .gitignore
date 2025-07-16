@@ -1,4 +1,5 @@
 *.backup
+.DS_Store
 
 # ignore tmux plugins dir
 .config/tmux/plugins
