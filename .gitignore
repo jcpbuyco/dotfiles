@@ -3,3 +3,6 @@
 
 # ignore tmux plugins dir
 .config/tmux/plugins
+
+# ignore karabiner auto backups
+.config/karabiner/automatic_backups
