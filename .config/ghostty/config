@@ -8,6 +8,9 @@ copy-on-select = clipboard
 background-opacity = 0.85
 background-blur = 60
 
+window-width = 9999
+window-height = 9999
+
 window-padding-balance = true
 window-padding-x = 10
 window-padding-y = 0,5
