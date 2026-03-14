@@ -117,14 +117,4 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 
-# SDKMAN (lazy-loaded)
-export SDKMAN_DIR="$HOME/.sdkman"
-_load_sdkman() {
-  unset -f sdk java gradle maven kotlin
-  [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
-}
-for cmd in sdk java gradle maven kotlin; do
-  eval "${cmd}() { _load_sdkman && ${cmd} \"\$@\" }"
-done
-
 export PATH="$HOME/.local/bin:$PATH"
