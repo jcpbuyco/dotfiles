@@ -22,12 +22,18 @@ zinit snippet OMZP::git
 # zinit snippet OMZP::docker-compose
 # zinit snippet OMZP::kubectl
 
-# Load completions
-autoload -Uz compinit && compinit
+# Load completions (cached, rebuilds once per day)
+fpath=(/Users/jc/.docker/completions $fpath)
+autoload -Uz compinit
+if [[ -n ${ZDOTDIR:-$HOME}/.zcompdump(#qN.mh+24) ]]; then
+  compinit
+else
+  compinit -C
+fi
 
 
 # Keybindings
-bindkey -e # emacs keybindings (learn this later)
+bindkey -v
 bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
 
@@ -83,10 +89,16 @@ if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
   eval "$(oh-my-posh init zsh --config ~/.config/omp/theme.omp.toml)"
 fi
 
-# NVM 
+# NVM (lazy-loaded)
 export NVM_DIR="$HOME/.nvm"
-[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && . "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
-[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && . "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+_load_nvm() {
+  unset -f nvm node npm npx
+  [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && . "/opt/homebrew/opt/nvm/nvm.sh"
+  [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && . "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
+}
+for cmd in nvm node npm npx; do
+  eval "${cmd}() { _load_nvm && ${cmd} \"\$@\" }"
+done
 
 # Android
 export ANDROID_HOME=$HOME/Library/Android/sdk
@@ -105,12 +117,14 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+# SDKMAN (lazy-loaded)
 export SDKMAN_DIR="$HOME/.sdkman"
-[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
-# The following lines have been added by Docker Desktop to enable Docker CLI completions.
-fpath=(/Users/jc/.docker/completions $fpath)
-autoload -Uz compinit
-compinit
-# End of Docker CLI completions
+_load_sdkman() {
+  unset -f sdk java gradle maven kotlin
+  [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+}
+for cmd in sdk java gradle maven kotlin; do
+  eval "${cmd}() { _load_sdkman && ${cmd} \"\$@\" }"
+done
+
 export PATH="$HOME/.local/bin:$PATH"
